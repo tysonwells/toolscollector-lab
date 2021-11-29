@@ -16,6 +16,10 @@
     <h1>{{ tool.name }}</h1>
     
     <p>{{ tool.description }}</p>
+    <div class="tool-actions">
+      <a href="{% url 'tools_update' tool.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'tools_delete' tool.id %}" class="btn danger">Delete</a>
+    </div>
   </div>
 </section>
 
