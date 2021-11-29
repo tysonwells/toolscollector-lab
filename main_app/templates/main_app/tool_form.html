@@ -7,6 +7,14 @@
 
 {% block content %}
 
+
+  <!-- New if/else block -->
+  {% if object %}
+    <h1>Edit {{object.name}}</h1>
+  {% else %}
+    <h1>Add a tool</h1>
+  {% endif %}
+
 <div class="page-header">
   <h1>Add a tool</h1>
 </div>
