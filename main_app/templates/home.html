@@ -1,20 +1,11 @@
 {% extends 'base.html' %}
-{% load static %}
 
-{% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
-{% endblock %}
+
+
+
 
 {% block content %}
 
-<section class="logo-container">
-  <div class="tool-container">
-    <img src="{% static 'images/splash.svg' %}" alt="The Tools Collector Tool" />
-  </div>
-  <img 
-    {% comment %} src="{% static 'images/logotype.svg' %}"  {% endcomment %}
-    {% comment %} alt="Text reads: Tool Collector" {% endcomment %}
-  />
-</section>
+Tool Collector!
 
 {% endblock %}
