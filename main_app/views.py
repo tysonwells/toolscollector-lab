@@ -23,12 +23,12 @@ def tools_detail(request, tool_id):
 
 class toolCreate(CreateView):
   model = Tool
-  fields = ['name', 'manufacturer', 'description']
+  fields = ['name', 'manufacturer', 'modelNumber', 'description']
 
 class toolUpdate(UpdateView):
   model = Tool
   # Let's disallow the renaming of a tool by excluding the name field!
-  fields = ['name', 'manufacturer', 'description']
+  fields = ['name', 'manufacturer', 'modelNumber', 'description']
 
 class toolDelete(DeleteView):
   model = Tool

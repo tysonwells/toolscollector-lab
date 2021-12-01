@@ -8,22 +8,33 @@
 {% block content %}
 
 <section class="page-header">
-  <h1>Tools List</h1>
-  
+  <h1>tool List</h1>
+  <img src="{% static 'images/cool-tool.svg' %}" alt="A cool tool" />
+  <img src="{% static 'images/happy-tool.svg' %}" alt="A happy tool" />
+  <img src="{% static 'images/teacup-tool.svg' %}" alt="A tool in a teacup" />
+  <img src="{% static 'images/tool-in-box.svg' %}" alt="A tool in a box" />
 </section>
 
 <section class="card-container">
   {% for tool in tools %}
     <div class="card">
-      <a href="{% url 'tools_detail' tool.id %}">
-        <div class="card-content">
-          <div class="card-img-container">          
-            
-          </div>
-          <h2 class="card-title">{{ tool.name }}</h2>
-
+      <a href="/cats/{{ cat.id }}">
+      <div class="card-content">
+        <div class="card-img-container">
+          <img 
+            src="{% static 'images/sk8r-boi-tool.svg' %}" 
+            alt="A skater boy tool"
+          >
         </div>
-      </a>
+        <h2 class="card-title">{{ tool.name }}</h2>
+        {% if tool.age > 0 %}
+          <p>A {{ tool.age }} year old {{ tool.breed }}</p>
+        {% else %}
+          <p>A {{ tool.breed }} kitten.</p>
+        {% endif %}
+        <p><small>{{ tool.description }}</small></p>
+      </div>
+    </a>
     </div>
   {% endfor %}
 </section>
