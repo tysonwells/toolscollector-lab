@@ -23,16 +23,12 @@ def tools_detail(request, tool_id):
 
 class toolCreate(CreateView):
   model = Tool
-  fields = ['name', 'manufacturer', 'modelNumber', 'description']
+  fields = ['name', 'manufacturer', 'description']
 
 class toolUpdate(UpdateView):
   model = Tool
   # Let's disallow the renaming of a tool by excluding the name field!
-<<<<<<< HEAD
-  fields = ['name', 'manufacturer', 'modelNumber', 'description']
-=======
-  fields = ['name', 'manufacturer', 'description']
->>>>>>> parent of e7eedac (add name to editpage and confirm delete functionality)
+  fields = ['manufacturer', 'description']
 
 class toolDelete(DeleteView):
   model = Tool
