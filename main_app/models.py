@@ -5,7 +5,7 @@ from django.urls import reverse
 class Tool(models.Model):
   name = models.CharField(max_length=100)
   manufacturer = models.CharField(max_length=100)
-  modelNumber = models.CharField(max_length=100)
+  modelNumber = models.CharField(blank=True, max_length=50)
   description = models.TextField(max_length=250)
 
   def __str__(self):
