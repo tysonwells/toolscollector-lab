@@ -27,6 +27,10 @@ class toolCreate(CreateView):
   model = Tool
   fields = ['name', 'manufacturer', 'modelNumber', 'description']
 
+  def form_valid(self, form):
+      form.instance.user = self.request.user
+      return super().form_valid(form)
+
 class toolUpdate(UpdateView):
   model = Tool
   # Let's disallow the renaming of a tool by excluding the name field!
