@@ -3,6 +3,8 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Tool
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
 
 
@@ -31,6 +33,21 @@ class toolCreate(CreateView):
       form.instance.user = self.request.user
       return super().form_valid(form)
 
+def signup(request):
+  error_message = ''
+  if request.method == 'POST':
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      login(request, user)
+      return redirect('tools_index')
+    else:
+      error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'signup.html', context)
+
+
 class toolUpdate(UpdateView):
   model = Tool
   # Let's disallow the renaming of a tool by excluding the name field!
@@ -39,4 +56,6 @@ class toolUpdate(UpdateView):
 class toolDelete(DeleteView):
   model = Tool
   success_url = '/tools/'
+
+
 
