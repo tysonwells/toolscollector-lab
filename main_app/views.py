@@ -33,19 +33,6 @@ class toolCreate(CreateView):
       form.instance.user = self.request.user
       return super().form_valid(form)
 
-def signup(request):
-  error_message = ''
-  if request.method == 'POST':
-    form = UserCreationForm(request.POST)
-    if form.is_valid():
-      user = form.save()
-      login(request, user)
-      return redirect('tools_index')
-    else:
-      error_message = 'Invalid sign up - try again'
-    form = UserCreationForm()
-    context = {'form': form, 'error_message': error_message}
-    return render(request, 'signup.html', context)
 
 
 class toolUpdate(UpdateView):
@@ -55,7 +42,22 @@ class toolUpdate(UpdateView):
 
 class toolDelete(DeleteView):
   model = Tool
-  success_url = '/tools/'
+  success_url = '/tools/'    
 
+def signup(request):
+  error_message = ''
+  if request.method == 'POST':
 
-
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      
+      user = form.save()
+      
+      login(request, user)
+      return redirect('tools_index')
+    else:
+      error_message = 'Invalid sign up - try again'
+  
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'signup.html', context)
