@@ -5,6 +5,8 @@ from .models import Tool
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
@@ -15,17 +17,19 @@ class Home(LoginView):
 def about(request):
   return render(request, 'about.html')
 
+@login_required
 def tools_index(request):
-  tools = Tool.objects.all()
+  tools = Tool.objects.filter(user=request.user)
   # similar to tool.find({}) in MEN stack
   return render(request, 'tools/index.html', {'tools': tools})
 
+@login_required
 def tools_detail(request, tool_id):
   tool = Tool.objects.get(id=tool_id)
   return render(request, 'tools/detail.html', { 'tool': tool })
   
 
-class toolCreate(CreateView):
+class toolCreate(LoginRequiredMixin, CreateView):
   model = Tool
   fields = ['name', 'manufacturer', 'modelNumber', 'description']
 
@@ -35,12 +39,12 @@ class toolCreate(CreateView):
 
 
 
-class toolUpdate(UpdateView):
+class toolUpdate(LoginRequiredMixin, UpdateView):
   model = Tool
   # Let's disallow the renaming of a tool by excluding the name field!
   fields = ['manufacturer', 'modelNumber', 'description']
 
-class toolDelete(DeleteView):
+class toolDelete(LoginRequiredMixin, DeleteView):
   model = Tool
   success_url = '/tools/'    
 
