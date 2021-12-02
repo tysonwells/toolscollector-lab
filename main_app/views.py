@@ -2,12 +2,13 @@ from django.shortcuts import redirect, render
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Tool
+from django.contrib.auth.views import LoginView
 
 
 
 # Create your views here.
-def home(request):
-  return render(request, 'home.html')
+class Home(LoginView):
+  template_name = 'home.html'
 
 def about(request):
   return render(request, 'about.html')
@@ -20,6 +21,7 @@ def tools_index(request):
 def tools_detail(request, tool_id):
   tool = Tool.objects.get(id=tool_id)
   return render(request, 'tools/detail.html', { 'tool': tool })
+  
 
 class toolCreate(CreateView):
   model = Tool
