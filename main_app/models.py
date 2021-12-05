@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Tool(models.Model):
+  date = models.DateField(blank=True, null=True)
   name = models.CharField(max_length=100)
   manufacturer = models.CharField(max_length=100)
   modelNumber = models.CharField(blank=True, max_length=50)

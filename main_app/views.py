@@ -31,7 +31,7 @@ def tools_detail(request, tool_id):
 
 class toolCreate(LoginRequiredMixin, CreateView):
   model = Tool
-  fields = ['name', 'manufacturer', 'modelNumber', 'description']
+  fields = ['name', 'manufacturer', 'modelNumber', 'description', 'date']
   success_url = '/tools/' 
 
   def form_valid(self, form):
@@ -41,7 +41,7 @@ class toolCreate(LoginRequiredMixin, CreateView):
 class toolUpdate(LoginRequiredMixin, UpdateView):
   model = Tool
   # Let's disallow the renaming of a tool by excluding the name field!
-  fields = ['manufacturer', 'modelNumber', 'description']
+  fields = ['manufacturer', 'modelNumber', 'description', 'date']
 
 class toolDelete(LoginRequiredMixin, DeleteView):
   model = Tool
