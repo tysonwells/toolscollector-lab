@@ -27,13 +27,13 @@ body {
     sans-serif;
   min-height: 100vh;
   --nav-bg: rgba(104, 197, 248, .7);
-  --nav-bg-ff: rgba(104, 197, 248, .9);
-  --borders: rgb(36, 116, 248) solid 2px;
+  --nav-bg-ff: rgb(210, 180, 140);
+  --borders: rgb(92, 67, 36) solid 2px;
   --text-color: rgb(17, 20, 17);
   --link-hover-color: rgb(16, 56, 158);
   --button-bg: rgb(245, 245, 245);
   --button-bg-hover: rgb(226, 226, 226);
-  --submit: rgb(26, 128, 0);
+  --submit: rgb(92, 67, 36);
   --warn: rgb(255, 102, 0);
   --danger: rgb(220, 20, 30);
   --secondary: rgb(57, 57, 57);
