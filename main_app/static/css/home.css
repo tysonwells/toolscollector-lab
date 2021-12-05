@@ -27,6 +27,10 @@ main > section {
   width: 80%;
 }
 
+.tool-image {
+  width: 150%;
+}
+
 .login {
   display: flex;
   flex-direction: column;

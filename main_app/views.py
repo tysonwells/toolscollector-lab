@@ -32,12 +32,11 @@ def tools_detail(request, tool_id):
 class toolCreate(LoginRequiredMixin, CreateView):
   model = Tool
   fields = ['name', 'manufacturer', 'modelNumber', 'description']
+  success_url = '/tools/' 
 
   def form_valid(self, form):
       form.instance.user = self.request.user
       return super().form_valid(form)
-
-
 
 class toolUpdate(LoginRequiredMixin, UpdateView):
   model = Tool

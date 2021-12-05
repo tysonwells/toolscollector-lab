@@ -5,6 +5,10 @@
   flex-wrap: wrap;
 }
 
+.card-title {
+  font-size: var(--font-reg);
+}
+
 .card {
   width: 275px;
   margin: 10px;
